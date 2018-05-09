@@ -1,0 +1,327 @@
+\documentclass[a4paper]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\xdefinecolor{gray95}{gray}{0.65}
+\xdefinecolor{gray92}{gray}{0.9}
+\xdefinecolor{gray25}{gray}{0.8}
+
+\usepackage{pdfpages}
+\pdfminorversion=7
+\pdfinclusioncopyfonts=1
+
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{makeidx}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{hhline,multirow}
+
+\usepackage{epstopdf}
+
+% MY PACKAGES
+\usepackage{xcolor, soul}
+\usepackage{url}
+
+\usepackage{enumitem}
+
+\usepackage[style=numeric,giveninits,sorting=none,backend=bibtex,maxbibnames=99]{biblatex}
+\addbibresource{tesisCBG.bib}
+
+\renewbibmacro{in:}{}
+
+\makeatletter
+
+\DeclareCiteCommand{\fullcite}
+{\defcounter{maxnames}{\blx@maxbibnames}%
+	\usebibmacro{prenote}}
+{\usedriver
+	{\DeclareNameAlias{sortname}{default}}
+	{\thefield{entrytype}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+\DeclareCiteCommand{\footfullcite}[\mkbibfootnote]
+{\defcounter{maxnames}{\blx@maxbibnames}%
+	\usebibmacro{prenote}}
+{\usedriver
+	{\DeclareNameAlias{sortname}{default}}
+	{\thefield{entrytype}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\appto{\bibsetup}{\sloppy}
+
+\patchcmd\AM@output{\setboolean{AM@endoflist}{false}}
+{\newpage
+	\label{start-\AM@currentdocname}%
+	\setboolean{AM@endoflist}{false}}
+{}{\fail}
+
+\patchcmd\AM@output{\global\let\@deferlist\AM@deferlist}
+{\global\let\@deferlist\AM@deferlist
+	\label{stop-\AM@currentdocname}}
+{}{\fail}
+
+\makeatother
+
+%\usepackage{subcaption}
+\usepackage{longtable}
+%\usepackage{subfig}
+\usepackage{latexsym}
+\usepackage[maxfloats=25]{morefloats}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\makeindex
+
+\newenvironment{code}{
+\begin{footnotesize}
+     \begin{tt}
+           \begin{tabbing}
+                  **\= **\= **\= **\=  **\=
+                  **\= **\= \kill}
+           {\end{tabbing}
+     \end{tt}
+\end{footnotesize}
+}
+
+\newcommand{\Tau}{\mathcal{T}}
+\newcommand{\ammas}{$\cal MM$AS}
+\newcommand{\ahcf}{HCF}
+\newcommand{\ib}{iteration-best}
+\newcommand{\gb}{best-so-far}
+\newcommand{\rb}{restart-best}
+
+\newcommand{\definitionname}{Definition}
+
+\newtheorem{definition}{\definitionname}
+
+\newcommand{\centertext}[1]{\makebox[0pt][c]{#1}}
+
+\setlength\evensidemargin{3cm} \setlength\oddsidemargin{3cm} \setlength\textwidth{15cm}
+
+\hyphenation{aco-pla-miento}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} \fancyhf{}
+\fancyhead[LO]{\leftmark} % En las páginas impares, parte izquierda del encabezado, aparecerá el nombre de capí­tulo
+\fancyhead[RE]{\rightmark} % En las páginas pares, parte derecha del encabezado, aparecerá el nombre de sección
+\fancyhead[RO,LE]{\thepage} % Números de página en las esquinas de los encabezados
+
+
+\addtolength\oddsidemargin{-1in}
+
+\addtolength\evensidemargin{-1in}
+
+%\renewcommand{\tablename}{Tabla}
+%\addto\captionsspanish{%
+%  \renewcommand{\tablename}%
+%    {Tabla}%
+%}
+%\renewcommand{\tablename}{Tabla}
+%\addto\captionsspanish{%
+%  \renewcommand{\listtablename}%
+%    {Ãndice de Tablas}%
+%}
+
+\newtheorem{defi}{{\sc Definición}}
+
+\numberwithin{algorithm}{chapter}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de Algoritmos}
+
+
+\title{}
+
+\author{}
+
+\date{June 2017}
+
+\begin{document}
+
+\begin{titlepage}
+
+% begin PORTADA--------------------
+
+\setlength{\unitlength}{1 cm} %Especificar unidad de trabajo
+%\thispagestyle{empty}
+\begin{picture}(10,2.5)
+\put(0,0){\includegraphics[width=7cm,height=3cm]{figures/logo_UMA}}
+\put(9.5,0){\includegraphics[width=5.5cm,height=3cm]{figures/logo_LCC}}
+%\put(0,0){\includegraphics[width=4.66cm,height=2cm]{img/logo_UMA}}
+%\put(9.5,0){\includegraphics[width=3.66cm,height=2cm]{img/logo_LCC}}
+\end{picture}
+
+\begin{center}
+\begin{Large}
+\vspace*{1.5cm}
+TESIS DOCTORAL\\
+\end{Large}
+\vspace*{1cm}
+\rule{80mm}{1mm}\\
+\vspace*{1cm}
+\begin{huge}
+	\textbf{Semantic in \\
+		Big Data Optimization\\ }
+\end{huge}
+\vspace*{1cm}
+\rule{80mm}{1mm}\\
+\vspace*{1cm}
+\begin{large}
+	\textbf{E.T.S.I. Informática}\\
+	R.D. 99/2011\\
+\end{large}
+\vspace*{14mm}
+\begin{large}
+Autor\\
+\end{large}
+\vspace*{3mm}
+\begin{large}
+\textbf{Cristóbal Barba González}\\
+\end{large}
+\vspace*{10mm}
+\begin{large}
+Directores \\
+\end{large}
+\end{center}
+
+\begin{table}[H]
+%\resizebox{17cm}{!}{
+\resizebox{15cm}{!}{
+\begin{tabular}{cc}
+% & \\
+\begin{Large} \textbf{Dr. José F. Aldana Montes} \end{Large} &
+\begin{Large} \textbf{Dr. José Manuel García Nieto } \end{Large} \\
+ & \\
+\begin{Large} Departamento \end{Large} &
+\begin{Large} Departamento \end{Large} \\
+ & \\
+\begin{Large} \textbf{Lenguajes y Ciencias de la Computación} \end{Large} &
+\begin{Large} \textbf{Lenguajes y Ciencias de la Computación} \end{Large} \\
+ & \\
+\begin{Large} \textbf{Universidad de Málaga} \end{Large} & \begin{Large} \textbf{Universidad de Málaga}  \end{Large} \\
+\end{tabular}
+}
+\end{table}
+
+\begin{large}
+\vspace*{5mm}
+\begin{flushleft} \raggedleft{October 2018} \end{flushleft}
+\end{large}
+
+% end PORTADA --
+
+\clearpage \thispagestyle{empty}
+~ % para forzar un salto de página
+
+% begin CERTIFICACIÓN --
+
+%\input{Firmas}
+\includepdf[pages=-]{pdf/firmas.pdf}
+
+\clearpage \thispagestyle{empty}
+~ % para forzar un salto de página
+
+\end{titlepage}
+
+% Agradecimientos
+\input{Chapters/Acknowledgements}
+
+ \pagenumbering{roman}
+ \setcounter{page}{5}
+
+ \tableofcontents
+
+ \clearpage \thispagestyle{empty}
+
+ \pagenumbering{arabic}
+
+%\part{Tesis Doctoral por Compendio de Publicaciones}
+
+% Resumen en español
+\input{Chapters/Resumen}
+
+% introducción global y justificación de la temática
+
+% finalidad de la tesis, Objetivos y fases.
+\input{Chapters/Introduction}
+
+%Capítulo sobre el estado del arte
+%\input{Chapters/StateOfTheArt}
+%Capítulo sobre Big DAta
+\input{Chapters/BigData}
+% Capítulo sobre optimización
+\input{Chapters/Multiobjective}
+
+
+\input{Chapters/jMetalSP}
+
+
+% Descripción de la metodología seguida
+%\input{Methodology}
+% Capítulo sobre Web Semántica
+\input{Chapters/WebSemantic}
+% Papers del compendio
+\input{Chapters/PublishedWorks}
+
+%Resumen global de los resultados
+%\input{Results}
+
+% Conclusiones y trabajos futuros}
+\input{Chapters/Conclusions}
+
+%\part{ApÃ©ndices}
+%\input{Simbolos}
+
+%\appendix
+
+
+%\input{Publicaciones}
+    % Nombre y adscripciÃ³n de autor y coautores.
+    % Referencia completa de la revista o editorial de publicaciÃ³n
+    %\Springer
+    %\Elsevier
+    %\OxfordPress
+
+    % Fundamentos
+    %\input{Intro_Metaheuristicas}
+    %\input{Intro_Estructuras}
+
+% BibTeX users please use one of
+%\bibliographystyle{unsrt}        % citations number
+%\bibliographystyle{natbib}
+%\bibliographystyle{MySpbasic}      % basic style, author-year citations
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{amsalpha} % Estilo de Jose Manuel
+%\bibliography{tesisELC}   % name your BibTeX data base
+\cleardoublepage
+%\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\printbibliography
+
+%\clearpage \thispagestyle{empty}
+
+%\listoftables
+
+\cleardoublepage
+%\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%\listofalgorithms
+
+% QUITADO POR AHORA:
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
+% FIN DE QUITADO POR AHORA
+
+\end{document}

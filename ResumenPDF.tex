@@ -1,0 +1,220 @@
+\documentclass[a4paper]{book}
+%\documentclass[a4paper,natbib]{book}
+\usepackage[T1]{fontenc}
+%\usepackage[spanish,es-tabla,es-noshorthands]{babel}
+%\usepackage[spanish]{babel} % TODO: ¿NECESARIO?
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\xdefinecolor{gray95}{gray}{0.65}
+\xdefinecolor{gray92}{gray}{0.9}
+\xdefinecolor{gray25}{gray}{0.8}
+
+\usepackage{pdfpages}
+\pdfminorversion=7
+\pdfinclusioncopyfonts=1
+
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{rotating}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{makeidx}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{hhline,multirow}
+%\usepackage{natbib}
+
+\usepackage{epstopdf}
+
+% MY PACKAGES
+\usepackage{xcolor, soul}
+\usepackage{url}
+%\usepackage[style=numeric-comp, sorting=none, sortcites=true, doi=false, giveninits=true, hyperref]{biblatex}
+% Revisar citas, pone dos veces las URLs
+\usepackage[style=numeric,giveninits,sorting=none,backend=bibtex,maxbibnames=99]{biblatex}
+\addbibresource{tesisELC.bib}
+
+%\usepackage{subcaption}
+\usepackage{longtable}
+%\usepackage{subfig}
+\usepackage{latexsym}
+\usepackage[maxfloats=25]{morefloats}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\makeindex
+
+\newenvironment{code}{
+\begin{footnotesize}
+     \begin{tt}
+           \begin{tabbing}
+                  **\= **\= **\= **\=  **\=
+                  **\= **\= \kill}
+           {\end{tabbing}
+     \end{tt}
+\end{footnotesize}
+}
+
+\newcommand{\Tau}{\mathcal{T}}
+\newcommand{\ammas}{$\cal MM$AS}
+\newcommand{\ahcf}{HCF}
+\newcommand{\ib}{iteration-best}
+\newcommand{\gb}{best-so-far}
+\newcommand{\rb}{restart-best}
+
+% XTODO: Necesario? Usados: Definition
+%\newcommand{\lemmaname}{Lema }
+%\newcommand{\theoremname}{Teorema }
+%\newcommand{\examplename}{Ejemplo }
+%\newcommand{\conjeturename}{Conjetura }
+%\newcommand{\corollaryname}{Corolario }
+\newcommand{\definitionname}{Definition}
+%\newcommand{\propositionname}{Proposición }
+
+%\newtheorem{example}{\examplename}
+%\newtheorem{theorem}{\theoremname}
+%\newtheorem{lemma}{\lemmaname}
+%\newtheorem{conjeture}{\conjeturename}
+%\newtheorem{corollary}{\corollaryname}
+%\newtheorem{proposition}{\propositionname}
+\newtheorem{definition}{\definitionname}
+
+\newcommand{\centertext}[1]{\makebox[0pt][c]{#1}}
+
+%\geometry{vmargin=3.5cm}
+%,twoside,titlepage
+\setlength\evensidemargin{3cm} \setlength\oddsidemargin{3cm} \setlength\textwidth{15cm}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} \fancyhf{}
+\fancyhead[LO]{\leftmark} % En las páginas impares, parte izquierda del encabezado, aparecerá el nombre de capí­tulo
+\fancyhead[RE]{\rightmark} % En las páginas pares, parte derecha del encabezado, aparecerá el nombre de sección
+\fancyhead[RO,LE]{\thepage} % Números de página en las esquinas de los encabezados
+
+
+\addtolength\oddsidemargin{-1in}
+
+\addtolength\evensidemargin{-1in}
+
+%\topmargin -1cm \textheight 23cm
+
+% TODO: NECESARIO? Quizá para índice de tablas
+%\renewcommand{\tablename}{Tabla}
+%\addto\captionsspanish{%
+%  \renewcommand{\tablename}%
+%    {Tabla}%
+%}
+%\renewcommand{\tablename}{Tabla}
+%\addto\captionsspanish{%
+%  \renewcommand{\listtablename}%
+%    {Ãndice de Tablas}%
+%}
+
+\newtheorem{defi}{{\sc Definición}}
+
+\numberwithin{algorithm}{chapter}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de Algoritmos}
+
+
+\title{}
+
+\author{}
+
+\date{June 2017}
+
+\begin{document}
+
+\begin{titlepage}
+
+% begin PORTADA--------------------
+
+\setlength{\unitlength}{1 cm} %Especificar unidad de trabajo
+%\thispagestyle{empty}
+\begin{picture}(10,2.5)
+\put(0,0){\includegraphics[width=7cm,height=3cm]{img/logo_UMA}}
+\put(9.5,0){\includegraphics[width=5.5cm,height=3cm]{img/logo_LCC}}
+%\put(0,0){\includegraphics[width=4.66cm,height=2cm]{img/logo_UMA}}
+%\put(9.5,0){\includegraphics[width=3.66cm,height=2cm]{img/logo_LCC}}
+\end{picture}
+
+\begin{center}
+\begin{Large}
+\vspace*{1.5cm}
+TESIS DOCTORAL\\
+\end{Large}
+\vspace*{1cm}
+\rule{80mm}{1mm}\\
+\vspace*{1cm}
+\begin{huge}
+	% TODO: ¿Título en inglés?
+	\textbf{Optimización multi-objetivo en\\
+		las ciencias de la vida\\ }
+\end{huge}
+\vspace*{1cm}
+\rule{80mm}{1mm}\\
+\vspace*{1cm}
+\begin{large}
+	\textbf{E.T.S.I. Informática}\\
+	R.D. 99/2011\\
+\end{large}
+\vspace*{14mm}
+\begin{large}
+Autor\\
+\end{large}
+\vspace*{3mm}
+\begin{large}
+\textbf{Esteban López Camacho}\\
+\end{large}
+\vspace*{10mm}
+\begin{large}
+Directores \\
+\end{large}
+\end{center}
+
+\begin{table}[H]
+%\resizebox{17cm}{!}{    % TODO ¿NECESARIO?
+\resizebox{15cm}{!}{    % TODO ¿NECESARIO?
+\begin{tabular}{cc}
+% & \\
+\begin{Large} \textbf{Dr. José F. Aldana Montes} \end{Large} &
+\begin{Large} \textbf{Dr. Antonio J. Nebro Urbaneja} \end{Large} \\
+ & \\
+\begin{Large} Departamento \end{Large} &
+\begin{Large} Departamento \end{Large} \\
+ & \\
+\begin{Large} \textbf{Lenguajes y Ciencias de la Computación} \end{Large} &
+\begin{Large} \textbf{Lenguajes y Ciencias de la Computación} \end{Large} \\
+ & \\
+\begin{Large} \textbf{Universidad de Málaga} \end{Large} & \begin{Large} \textbf{Universidad de Málaga}  \end{Large} \\
+\end{tabular}
+}
+\end{table}
+
+\begin{large}
+\vspace*{5mm}
+\begin{flushleft} \raggedleft{June 2017} \end{flushleft}
+\end{large}
+
+% end PORTADA --
+
+\end{titlepage}
+
+
+ \pagenumbering{roman}
+ \setcounter{page}{5}
+
+ \clearpage \thispagestyle{empty}
+
+ \pagenumbering{arabic}
+
+%\part{Tesis Doctoral por Compendio de Publicaciones}
+
+\input{Resumen}
+
+\end{document}

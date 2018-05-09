@@ -1,0 +1,311 @@
+\chapter{Results}
+\label{chapter:results}
+\index{Results}
+
+In this chapter, we show a global summary of all the results obtained in the published works that sustain this dissertation. First, in Section~\ref{sec:SingleObjectiveStudy} we will summarize the results obtained in our single-objective study. Then, in Section~\ref{sec:MultiObjectiveStudy}, the results obtained in the multi-objective works will be shown and discussed briefly.
+
+\section{Single-objective study}
+\label{sec:SingleObjectiveStudy}
+
+In our first single-objective study~\cite{lopez2015asoc}, we tested the performance new metaheuristic techniques apart from those included in the AutoDock Tools for solving molecular docking problems. This study approached the problem as a single-objective optimization problem, as AutoDock does. AutoDock provides two different techniques to solve the problem a Lamarckian Genetic Algorithm (LGA), which includes local search, and a common Genetic Algorithm (GA). We added four single-objective metaheuristic: generational Genetic Algorithm (gGA), steady-state Genetic Algorithm (ssGA), Differential Evolution (DE) and Particle Swarm Optimization (PSO). A study with 75 protein-ligan complexes taken from PDB was carried on using the same fitness function and configuration parameters than AutoDock to have a comparison as fair as possible.
+
+In Table~\ref{tab:asoc-medians-75}, the median binding energy (the fitness function used in this study) of the six compared algorithms (four from jMetal and two from AutoDock) from 30 independent runs for each one of the 75 analyzed molecules. These binding energies in kcal/ml associated with the receptor-ligand complex, as explained in Section~\ref{subsection:mono_solution}. Therefor, the lower the binding energy the better the result.
+
+In Table~\ref{tab:asoc-medians-75}, the best result for each instance is marked with a gray background. With a first observation, it is noticeable that DE (jMetal) obtained the best results in 67 of the 75 instances, followed by LGA (AutoDock) that achieved the best results in the remaining eight instances (1B6L, 1BDL, 1HEF, 1HIV, 1HPO, 1K6C, 1Z1H and 1ZIR). These results were provided with statistical confidence ($\alpha = 0.05$) as a series of non-parametric statistical tests were applied. In particular, Friedman's ranking and Holm's post-hoc multicompare tests were calculated and showed that DE achieved a statistically better performance than the rest of the other analyzed algorithms. This fact is remarkable as the AutoDock algorithms are specifically designed to solve molecular docking problems.
+It was also noted that DE showed a slower convergence behavior, though with more successful solutions than its competitors. However, gGA demonstrated a fast convergence, and also achieved high-quality solutions, so this algorithm could be a good choice when looking for fast, but good enough solutions. More details about this study are presented in section~\ref{sec:publications-asoc} and its correspondent publication.
+
+\begin{table}
+	\caption{\label{tab:asoc-medians-75}Performance results of compared algorithms (gGA, ssGA, DE, and PSO from jMetal; GA and LGA from AutoDock) for the test set of 75 docking instances. Each cell contains the median binding energy values (kcal/mol) from 30 independent runs for each molecule (with PDB accession code) and algorithm}
+	\scriptsize
+	\centering
+	\begin{tabular}{ll|rrrrrrrrrrrrrrrrrrrr}
+		\hline			
+		Algs./ & PDB	 & 1A94 & 	1A9M	 & 1AAQ	 & 1B6J & 	1B6K & 	1B6L & 	1B6P & 	1B6M & 	1BDL & 	1BDQ\\
+		\hline
+		\multirow{4}{*}{jMetal} &   gGA	 & 2.72	 & 0.075 & 	-0.83 & -2.23 & -2.49 & -3.915 & 	-3.365 & 	-3.61 & 	-0.965 & 	-1.145 \\
+		\multirow{4}{*}{} &        ssGA & 	4.1 & 	0.755 & 	0.13 & 	-0.685 & -2.285 & -2.89 & -2.28 & 	-2.435 & 	-0.4 & 	0.375\\
+		\multirow{4}{*}{} &          DE	 &\cellcolor{gray25} 0.7 &\cellcolor{gray25} 	-3.18 &\cellcolor{gray25} 	-1.865 & \cellcolor{gray25}	-3.885 &\cellcolor{gray25} 	-5.26 & 	-6.04 &\cellcolor{gray25} 	-6.985	 &\cellcolor{gray25} -5.865 & 	-2.275 &\cellcolor{gray25} 	-3.09\\
+		\multirow{4}{*}{} &          PSO	 & 5.545	 & 1.785	 & 1.025 & 	-0.43	 & -0.965 & 	-2.83	 & -1.6	 & -1.08	 & 0.755	 & 0.975\\
+		\hline
+		\multirow{2}{*}{ADock} &          GA	 & 4.35	 & 1.56 & 	0.785	 & -0.575	 & -1.33 & 	-3.505 & 	-2.445 & 	-2.49 & 	0.415 & 	0.27\\
+		\multirow{2}{*}{} &         LGA & 	1.41	 & -1.695	 & -1.8	 & -3.45 & 	-4.83 & \cellcolor{gray25}	-6.27 & 	-5.285 & 	-5.155 & \cellcolor{gray25}	-2.36 & 	-2.64\\
+		
+		\hline
+		\hline			
+		Algs./ & PDB & 1BDR &	1BV7 &	1BV9 &	1BWA &	1BWB &	1D4K &	1D4L &	1DMP &	1G35 &	1GNM\\
+		\hline
+		\multirow{4}{*}{jMetal} &  gGA	 & -1.895&-3.345&-4.105&-2.14&-2.96&-6.33&-6.805&-2.99&-3.21&-3.145\\
+		\multirow{4}{*}{} &           ssGA & 	-0.27&-2.18&-2.19&-2.715&-1.955&-4.235&-4.95&-1.885&-2.065&0.85\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -2.83&\cellcolor{gray25}-6.13&\cellcolor{gray25}-5.8&\cellcolor{gray25}-5.47&\cellcolor{gray25}-5.345&\cellcolor{gray25}-8.135&\cellcolor{gray25}-9.45&\cellcolor{gray25}-5.605&\cellcolor{gray25}-5.43&\cellcolor{gray25}-4.4\\
+		\multirow{4}{*}{} &            PSO	 & 0.315&-1.14&-0.81&-0.7&-0.46&-2.21&-2.52&-1.06&-0.965&2.165\\
+		\hline
+		\multirow{2}{*}{ADock} &            GA	 & 0.18&-1.715&-2.09&-1.725&-1.69&-4.09&-4.25&-1.725&-1.55&0.665\\
+		\multirow{2}{*}{} &            LGA  & -2.005&-5.035&-4.51&-4.995&-4.765&-6.795&-7.39&-4.235&-4.015&-3.245\\
+		\hline	
+		\hline			
+		Algs./ & PDB &1GNN&1GNO&1HBV&1HEF&1HEG&1HIH&1HIV&1HOS&1HPO&1HPS\\
+		\hline
+		
+		\multirow{4}{*}{jMetal} &           gGA	 & -3.13&1.495&-1.665&0.805&-1.525&-0.9&0.135&1.85&-3.085&1.42\\
+		\multirow{4}{*}{} &           ssGA & -0.215&3.52&-0.63&2.035&-0.21&0.555&0.6&1.72&-3.06&1.97\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -5.825&\cellcolor{gray25}-0.255&\cellcolor{gray25}-3.71&-1.5&\cellcolor{gray25}-4.135&\cellcolor{gray25}-2.505&-1.64&\cellcolor{gray25}-2.31&-5.305&\cellcolor{gray25}-3.465\\
+		\multirow{4}{*}{} &           PSO	 & 1.665&5.98&0.375&2.48&1.185&1.265&2.48&6.26&-2.04&4.57\\
+		\hline
+		\multirow{2}{*}{ADock} &           GA	 & 0.03&5.22&0.05&1.375&0.215&0.545&1.5&2.245&-3.035&2.025\\
+		\multirow{2}{*}{} &           LGA  & -3.155&0.99&-2.76&\cellcolor{gray25}-2.225&-3.515&-1.675&\cellcolor{gray25}-1.645&5.325&\cellcolor{gray25}-6.075&-2.38\\
+		\hline
+		\hline	
+		Algs./ & PDB &1HPV&1HSG&1HTE&1HTG&1HVI&1HVJ&1HVK&1HVL&1HVS&1HWR\\
+		\hline
+		
+		\multirow{4}{*}{jMetal} &           gGA	 & -1.73&-2.9&-2.195&0.41&1.115&1.075&1.13&0.895&0.59&-2.645\\
+		\multirow{4}{*}{} &           ssGA & -0.915&-1.885&-2.08&1.82&1.65&2.2&2.26&1.925&0.905&-1.685\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -3.635&\cellcolor{gray25}-5.805&\cellcolor{gray25}-5.285&\cellcolor{gray25}-4.83&\cellcolor{gray25}-2.09&\cellcolor{gray25}-1.775&\cellcolor{gray25}-1.555&\cellcolor{gray25}-1.79&\cellcolor{gray25}-2.7&\cellcolor{gray25}-5.03\\
+		\multirow{4}{*}{} &           PSO	 & 0.125&-0.335&-1.295&6.015&2.565&2.06&2.475&2.63&2.415&-0.91\\
+		\hline
+		\multirow{2}{*}{ADock} &           GA	 & -0.49&-1.185&-1.53&4.255&2.045&1.855&2.6&2.48&2.44&-1.655\\
+		\multirow{2}{*}{} &           LGA  & -2.505&-3.445&-3.98&-1.63&-0.31&-0.645&-0.17&-0.545&-0.81&-3.88\\
+		\hline
+		\hline	
+		Algs./ & PDB &1HXW&1IZH&1IZI&1JLD&1K6C&1K6P&1K6T&1K6V&1KZK&1MES\\
+		\hline
+		
+		\multirow{4}{*}{jMetal} &           gGA	 &-0.155&1.255&0.065&-0.41&-3.655&-3.945&-4.245&-3.905&-2.755&-2.92\\
+		\multirow{4}{*}{} &           ssGA & 0.295&1.145&1.195&-0.15&-3.16&-2.7&-3.32&-2.57&-1.035&-1.755\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -3.565&\cellcolor{gray25}-2.005&\cellcolor{gray25}-1.83&\cellcolor{gray25}-2.225&-4.85&\cellcolor{gray25}-6.39&\cellcolor{gray25}-9.205&\cellcolor{gray25}-6.165&\cellcolor{gray25}-5.645&\cellcolor{gray25}-6.06\\
+		\multirow{4}{*}{} &           PSO	 & 2.145&2.785&2.255&1.23&-0.925&-1.03&-0.995&-0.965&0.205&-0.545\\
+		\hline
+		\multirow{2}{*}{ADock} &           GA	 &1.12&1.98&1.34&1.06&-2.52&-2.16&-2.23&-1.97&-0.99&-1.19\\
+		\multirow{2}{*}{} &           LGA  &-1.66&-0.705&-1.09&-2.03&\cellcolor{gray25}-5.55&-4.575&-5.435&-5.07&-4.565&-4.045\\
+		\hline
+		\hline	
+		Algs./ & PDB &1MEU&1MTR&1MUI&1ODY&1PRO&1QBR&1QBT&1QBU&1SBG&1TCX\\
+		\hline
+		
+		\multirow{4}{*}{jMetal} &           gGA	 &-2.97&-3.995&-1.18&0.045&-2.38&-2.75&-4.325&-2.21&-1.03&-1.52\\
+		\multirow{4}{*}{} &           ssGA & -2.25&-1.775&0.19&0.725&-1.745&-1.895&-3.13&-2.87&-0.31&-0.455\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -5.74&\cellcolor{gray25}-5.62&\cellcolor{gray25}-2.645&\cellcolor{gray25}-1.95&\cellcolor{gray25}-4.925&\cellcolor{gray25}-5.925&\cellcolor{gray25}-6.055&\cellcolor{gray25}-6.81&\cellcolor{gray25}-2.51&\cellcolor{gray25}-2.605\\
+		\multirow{4}{*}{} &           PSO	 & -1.155&-0.86&0.85&2.295&0.175&-0.525&-1.47&-1.23&0.785&0.525\\
+		\hline
+		\multirow{2}{*}{ADock} &           GA	 &-2.09&-1.9&0.575&1.35&-1.585&-1.59&-2.615&-1.345&-0.12&-0.205\\
+		\multirow{2}{*}{} &           LGA  &-4.435&-5.065&-1.98&-1.625&-3.855&-4.69&-5.85&-3.755&-2.3&-2.36\\
+		\hline
+		\hline	
+		Algs./ & PDB &1VIJ&1VIK&1Z1H&1Z1R&2BPV&2BPX&3AID&3TLH&4HVP&4PHV\\
+		\hline
+		
+		\multirow{4}{*}{jMetal} &           gGA	 &1.21&-0.155&-4.06&-3.97&-2.095&-2.8&-0.265&-0.705&2.365&12.51\\
+		\multirow{4}{*}{} &           ssGA & 2.475&1.975&-4.245&-3.09&-1.045&-0.635&-0.035&-1.09&3.24&13.835\\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -1.09&\cellcolor{gray25}-1.725&-5.16&-5.12&\cellcolor{gray25}-3.89&\cellcolor{gray25}-4.575&\cellcolor{gray25}-3.44&\cellcolor{gray25}-4.855&\cellcolor{gray25}0.19&\cellcolor{gray25}7.28\\
+		\multirow{4}{*}{} &           PSO	 & 3.88&3.86&-2.81&-2.205&2.44&-0.615&0.71&0.01&4.785&16.905\\
+		\hline
+		\multirow{2}{*}{ADock} &           GA	 &2.96&2.98&-4.175&-3.15&-1.195&-1.145&-0.07&-1.39&4.45&15.025\\
+		\multirow{2}{*}{} &           LGA  &-0.64&-0.11&\cellcolor{gray25}-7.27&\cellcolor{gray25}-5.655&0.715&-3.595&-2.68&-4.28&1.235&7.94\\
+		\hline
+		\hline	
+		Algs./ & PDB &5HVP&7HVP&7UPJ&8HVP&9HVP& & &&&\\
+		\hhline{--|-----~~~~~}
+		
+		\multirow{4}{*}{jMetal} &           gGA	 &-0.075&-2.29&-3.645&-1.84&-0.175& & &&& \\
+		\multirow{4}{*}{} &           ssGA & 0.525&-2.105&-2.555&-1.475&0.3& &  & \\
+		\multirow{4}{*}{} &           DE	 &\cellcolor{gray25} -2.515&\cellcolor{gray25}-3.53&\cellcolor{gray25}-5.47&\cellcolor{gray25}-4.26&\cellcolor{gray25}-2.57&  & &\\
+		\multirow{4}{*}{} &           PSO	 & 2.155&-1.075&-1.855&1.79&1.245&  & \\
+		\hhline{--|-----~~~~~}
+		\multirow{2}{*}{ADock} &           GA	 &1.26&-1.54&-2.52&-1.385&1.305& & \\
+		\multirow{2}{*}{} &           LGA  &-2.225&-2.965&-5.155&-0.285&-1.87& &  \\
+		\hhline{--|-----~~~~~}
+	\end{tabular}
+\end{table}
+
+
+%\begin{table*}[!h]
+%	\caption{\label{Tab:bests-75-flex} Performance results of compared algorithms (gGA, ssGA, DE, and PSO from jMetal; GA and LGA from AutoDock) for the test set of 75 docking instances. Each cell contains the best binding energy value (kcal/mol) from 30 independent runs for each molecule (with PDB accession code) and algorithm}
+%	\scriptsize
+%	\centering
+%	\begin{tabular}{ll|rrrrrrrrrrrrrrrrrrrr}
+%		\hline			
+%		Algs./ & PDB	 & 1A94 & 	1A9M	 & 1AAQ	 & 1B6J & 	1B6K & 	1B6L & 	1B6P & 	1B6M & 	1BDL & 	1BDQ\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -0.03 & -2.89 & -2.23 & -4.53 & -5.17 & -7.81 & -6.94 & -6.79 & -5.7 & -4.07\\
+%		\multirow{4}{*}{} & ssGA & 0.71 & -2.25 & -2.96 & -2.69 & -5.02 & -7.38 & -5.33 & -5.94 & -2.97 & -3.39\\
+%		\multirow{4}{*}{} & DE & -0.33 &\cellcolor{gray25} -3.3 & -2.96 &\cellcolor{gray25} -5.74 & -6.47 & -7.88 &\cellcolor{gray25} -9.68 & -8.44 &\cellcolor{gray25} -5.89 &\cellcolor{gray25} -4.99\\
+%		\multirow{4}{*}{} & PSO & 0.36 & -0.72 & -1.61 & -3.48 & -3.66 & -5.7 & -3.89 & -5.34 & -1.57 & -1.96\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & 1.35 & -1.59 & -0.96 & -3.03 & -3.26 & -7.16 & -4.82 & -4.63 & -3.05 & -2.77\\
+%		\multirow{2}{*}{} & LGA &\cellcolor{gray25} -9.23 & -2.97 &\cellcolor{gray25} -7.01 & -4.82 &\cellcolor{gray25} -7.58 &\cellcolor{gray25} -10.17 & -7.72 &\cellcolor{gray25} -11.5 & -5.03 & -3.8\\
+%		\hline
+%		\hline			
+%		Algs./ & PDB & 1BDR &	1BV7 &	1BV9 &	1BWA &	1BWB &	1D4K &	1D4L &	1DMP &	1G35 &	1GNM\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -3.31 & -5.9 & -6.26 & -5.45 &\cellcolor{gray25} -6.91 & -8.65 & -10.41 & -5.52 & -6.26 & -5.15\\
+%		\multirow{4}{*}{} & ssGA & -3.21 & -6.53 & -5.86 & -4.89 & -4.67 & -8.74 & -8.84 & -4.43 & -6.1 & -5.67\\
+%		\multirow{4}{*}{} & DE &\cellcolor{gray25} -4.5 &\cellcolor{gray25} -7.57 &\cellcolor{gray25} -7.65 &\cellcolor{gray25} -7.74 & -6.02 & -10.86 & -11.18 & -6.47 & -6.21 & -5.84\\
+%		\multirow{4}{*}{} & PSO & -2.82 & -5.38 & -4.55 & -3.49 & -5.18 & -6.45 & -8.09 & -4.07 & -4.01 & -2.72\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -3.6 & -3.98 & -5.39 & -4.59 & -4.49 & -8.53 & -7.92 & -4.37 & -4.6 & -3.07\\
+%		\multirow{2}{*}{} & LGA & -3.85 & -7.29 & -6.71 & -7.02 & -6.18 &\cellcolor{gray25} -11.28 &\cellcolor{gray25} -13.28 &\cellcolor{gray25} -6.84 &\cellcolor{gray25} -6.35 &\cellcolor{gray25} -18.69\\
+%		\hline	
+%		\hline			
+%		Algs./ & PDB &1GNN&1GNO&1HBV&1HEF&1HEG&1HIH&1HIV&1HOS&1HPO&1HPS\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -7.05 & -0.84 & -3.09 & -2.38 & -3.07 & -2.78 & -2.88 & -0.32 & -5.03 & -1.61\\
+%		\multirow{4}{*}{} & ssGA & -5.8 & 0.72 & -2.8 & -1.67 & -3.67 & -1.72 & -3.4 & -1.25 & -5.05 & -2.54\\
+%		\multirow{4}{*}{} & DE & -7.75 & -2.39 &\cellcolor{gray25} -4.6 &\cellcolor{gray25} -4.33 & -5.35 &\cellcolor{gray25} -4.09 & -2.83 &\cellcolor{gray25} -4.91 & -6.06 & -6.48\\
+%		\multirow{4}{*}{} & PSO & -4.85 & 2.45 & -2.28 & -2.85 & -0.82 & -1.91 & -0.53 & 4.11 & -4.96 & -2.81\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -2.84 & 2.67 & -2.1 & 0.12 & -2.79 & -1.05 & -1.76 & -0.69 & -5.53 & -0.38\\
+%		\multirow{2}{*}{} & LGA &\cellcolor{gray25} -19.18 &\cellcolor{gray25} -14.71 & -4.52 & -3.76 &\cellcolor{gray25} -5.89 & -3.12 &\cellcolor{gray25} -4.03 & 3.28 &\cellcolor{gray25} -9.85 &\cellcolor{gray25} -7.49\\
+%		\hline
+%		\hline	
+%		Algs./ & PDB &1HPV&1HSG&1HTE&1HTG&1HVI&1HVJ&1HVK&1HVL&1HVS&1HWR\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -3.67 & -5.7 & -5.57 & -3.93 & -2.53 & -2.26 & -1.85 & -1.75 & -1.97 & -5.16\\
+%		\multirow{4}{*}{} & ssGA & -3.23 & -4.68 & -4.21 & -1.73 & -1.25 & -1.22 & -1.35 & -0.88 & -1.96 & -2.84\\
+%		\multirow{4}{*}{} & DE &\cellcolor{gray25} -5.17 &\cellcolor{gray25} -7.1 &\cellcolor{gray25} -6.92 & -5.0 &\cellcolor{gray25} -3.06 & -2.5 & -2.75 &\cellcolor{gray25} -2.37 & -2.98 & -5.84\\
+%		\multirow{4}{*}{} & PSO & -2.27 & -2.72 & -3.02 & -3.38 & -2.38 & -1.03 & -0.05 & -0.21 & -0.26 & -2.94\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -2.32 & -2.92 & -4.74 & 1.22 & 0.22 & -0.54 & 0.72 & 0.79 & 0.22 & -4.23\\
+%		\multirow{2}{*}{} & LGA & -3.51 & -4.98 & -5.78 &\cellcolor{gray25} -6.74 & -2.29 &\cellcolor{gray25} -2.89 &\cellcolor{gray25} -2.85 & -2.23 &\cellcolor{gray25} -3.15 &\cellcolor{gray25} -8.0\\
+%		\hline
+%		\hline	
+%		Algs./ & PDB &1HXW&1IZH&1IZI&1JLD&1K6C&1K6P&1K6T&1K6V&1KZK&1MES\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -3.79 & -1.86 & -2.11 & -3.63 & -7.62 & -6.63 & -8.28 & -7.07 & -6.0 & -4.54\\
+%		\multirow{4}{*}{} & ssGA & -3.19 & -3.06 & -2.26 & -2.77 & -6.92 & -6.68 & -6.43 & -6.39 & -6.84 & -4.26\\
+%		\multirow{4}{*}{} & DE & -3.98 & -2.96 &\cellcolor{gray25} -4.41 & -3.65 &\cellcolor{gray25} -9.84 &\cellcolor{gray25} -8.85 &\cellcolor{gray25} -10.24 &\cellcolor{gray25} -8.24 &\cellcolor{gray25} -7.91 &\cellcolor{gray25} -8.93\\
+%		\multirow{4}{*}{} & PSO & -1.28 & 0.02 & -1.41 & -1.63 & -5.14 & -4.69 & -4.85 & -3.7 & -4.31 & -3.36\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -1.01 & -0.56 & -0.43 & -1.19 & -5.44 & -4.26 & -6.58 & -4.45 & -3.42 & -4.3\\
+%		\multirow{2}{*}{} & LGA &\cellcolor{gray25} -4.14 &\cellcolor{gray25} -3.15 & -4.26 &\cellcolor{gray25} -5.11 & -8.64 & -6.94 & -8.93 & -7.72 & -7.51 & -7.41\\
+%		\hline
+%		\hline	
+%		Algs./ & PDB &1MEU&1MTR&1MUI&1ODY&1PRO&1QBR&1QBT&1QBU&1SBG&1TCX\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -5.73 & -6.42 & -2.78 & -2.66 & -4.91 & -6.63 & -6.27 & -5.93 & -3.79 & -3.21\\
+%		\multirow{4}{*}{} & ssGA & -4.58 & -4.29 & -3.14 & -1.06 & -5.22 & -5.88 & -5.51 & -5.47 & -2.57 & -2.78\\
+%		\multirow{4}{*}{} & DE &\cellcolor{gray25} -9.09 &\cellcolor{gray25} -8.1 & -4.77 &\cellcolor{gray25} -5.6 &\cellcolor{gray25} -6.69 &\cellcolor{gray25} -6.65 & -9.19 & -8.41 & -4.29 &\cellcolor{gray25} -3.91\\
+%		\multirow{4}{*}{} & PSO & -5.15 & -3.74 & -2.91 & -1.37 & -2.28 & -3.86 & -5.19 & -4.32 & -3.48 & -1.84\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -4.06 & -4.12 & -2.13 & -0.9 & -3.88 & -4.54 & -5.28 & -3.16 & -1.51 & -1.35\\
+%		\multirow{2}{*}{} & LGA &-8.88 & -6.25 &\cellcolor{gray25} -4.87 & -4.33 & -5.48 & -6.06 &\cellcolor{gray25} -12.86 &\cellcolor{gray25} -8.61 &\cellcolor{gray25} -4.72 & -3.8\\
+%		\hline
+%		\hline	
+%		Algs./ & PDB &1VIJ&1VIK&1Z1H&1Z1R&2BPV&2BPX&3AID&3TLH&4HVP&4PHV\\
+%		\hline
+%		\multirow{4}{*}{jMetal} & gGA & -2.72 & -2.41 & -7.95 & -6.99 & -4.75 & -6.04 & -3.22 & -3.66 & -0.82 & 9.1\\
+%		\multirow{4}{*}{} & ssGA & -1.43 & -1.6 &\cellcolor{gray25} -10.96 & -5.48 & -4.11 & -4.68 & -2.0 & -3.74 & -0.74 & 7.23\\
+%		\multirow{4}{*}{} & DE & -2.92 &\cellcolor{gray25} -2.92 & -8.09 & -7.4 &\cellcolor{gray25} -4.79 &\cellcolor{gray25} -6.61 & -4.13 & -7.12 &\cellcolor{gray25} -0.87 & 7.17\\
+%		\multirow{4}{*}{} & PSO & 0.72 & 0.02 & -7.1 & -4.91 & 1.69 & -2.73 & -1.62 & -2.15 & 1.99 & 8.67\\
+%		\hline
+%		\multirow{2}{*}{ADock} & GA & -0.64 & 0.54 & -7.34 & -4.7 & -3.66 & -3.79 & -1.98 & -3.6 & 0.9 & 11.85\\
+%		\multirow{2}{*}{} & LGA &\cellcolor{gray25} -10.17 & -2.27 & -9.38 &\cellcolor{gray25} -8.67 & -1.37 & -5.85 &\cellcolor{gray25} -5.37 &\cellcolor{gray25} -7.14 & 0.21 &\cellcolor{gray25} -9.92\\
+%		\hline
+%		\hline	
+%		Algs./ & PDB &5HVP&7HVP&7UPJ&8HVP&9HVP& & &&&\\
+%		\hhline{--|-----~~~~~}
+%		\multirow{4}{*}{jMetal} & gGA & -2.1 & -3.68 & -5.3 & -4.26 & -2.9\\
+%		\multirow{4}{*}{} & ssGA & -2.09 & -3.86 & -6.69 & -4.36 & -2.41\\
+%		\multirow{4}{*}{} & DE & -4.42 & -4.53 & -7.37 &\cellcolor{gray25} -5.44 &\cellcolor{gray25} -5.75\\
+%		\multirow{4}{*}{} & PSO & -1.09 &\cellcolor{gray25} -5.81 & -4.87 & 0.3 & -1.81\\
+%		\hhline{--|-----~~~~~}
+%		\multirow{2}{*}{ADock} & GA & -1.89 & -2.92 & -3.98 & -4.44 & -3.12\\
+%		\multirow{2}{*}{} & LGA &\cellcolor{gray25} -9.01 & -3.94 &\cellcolor{gray25} -8.39 & -2.38 & -3.4\\
+%		\hhline{--|-----~~~~~}
+%	\end{tabular}
+%\end{table*}
+
+\section{Multi-objective study}
+\label{sec:MultiObjectiveStudy}
+
+In our multi-objective studies, we took a new approach where we took the binding energy and the RMSD as optimization objectives. More details about this formulation were given in Section~\ref{subsection:multi_solution}. A benchmark composed of 11 complexes having receptor and ligand flexibility was selected. The selection of these complexes was motivated as they are docking problems containing a wide range of ligand sizes (from small to large inhibitors). Two quality indicators were calculated to measure the performance of each algorithm: Hypervolume  (I$_HV$) and Unary Additive Epsilon Indicator ($I_{\epsilon+}$). The first indicator takes into account both convergence and diversity, whereas the second one ($I_{\epsilon+}$) gives a measure of the convergence degree of the obtained Pareto front approximations. It is worth noting that, as we are dealing with real-world optimization problems, the true Pareto fronts needed to calculate these metrics are not known, so they had to be obtained using all the approximated fronts from all the executions of all the multi-objective algorithms for each problem.
+
+A first study was made taking into consideration some of the most common multi-objective metaheuristic algorithms in the state-of-the-art: NSGA-II, GDE3, SMPSO and MOEA/D. Table~\ref{tab:alcob-medians} shows the median and interquartile range of $I_{HV}$ and $I_{\epsilon+}$ for each algorithm and instance. The best and second best median results have dark and light gray backgrounds, respectively.
+
+\begin{table}
+	\caption{Median and interquartile range of $I_{HV}$ and $I_{\epsilon+}$ for each algorithm and instance. Best and second best median results have dark and light gray backgrounds, respectively.}
+	\label{tab:alcob-medians}
+	\centering
+	%\begin{scriptsize}
+	\scriptsize
+	\begin{tabular}{l|llll}
+		\hline 
+		$I_{HV}$ & NSGA-II & SMPSO & GDE3 &  MOEA/D\\
+		\hline 
+		1AJV & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  3.51e-01_{ 4.0e-02}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 2.9e-01}$ \\
+		1AJX & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  5.52e-01_{ 2.0e-02}$ & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray25}$  7.47e-03_{ 6.8e-01}$ \\
+		1D4K & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  4.93e-01_{ 1.3e-01}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1G2K & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  3.32e-01_{ 3.3e-02}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 4.1e-01}$ \\
+		1HIV & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  5.96e-01_{ 1.3e-01}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HPX & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  2.04e-01_{ 1.8e-01}$ & \cellcolor{gray25}$  1.27e-01_{ 6.5e-01}$ & $  0.00e+00_{ 1.1e-01}$ \\
+		1HTF & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  5.26e-02_{ 1.3e-01}$ & $  0.00e+00_{ 4.6e-03}$ & \cellcolor{gray25}$  2.78e-02_{ 3.3e-01}$ \\
+		1HTG & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  3.51e-02_{ 5.6e-02}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 1.9e-01}$ \\
+		1HVH & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  7.67e-01_{ 3.7e-02}$ & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray25}$  5.31e-01_{ 7.7e-01}$ \\
+		1VB9 & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  7.34e-01_{ 6.5e-02}$ & $  0.00e+00_{ 0.0e+00}$ & $  0.00e+00_{ 1.4e-01}$ \\
+		2UPJ & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray95}$  5.86e-01_{ 9.8e-02}$ & $  0.00e+00_{ 0.0e+00}$ & \cellcolor{gray25}$  1.90e-01_{ 5.8e-01}$ \\
+		\hline
+		$I_{\epsilon+}$ & NSGA-II & SMPSO & GDE3 &  MOEA/D\\
+		\hline 
+		1AJV & $  5.23e+00_{ 1.2e+00}$ & \cellcolor{gray95}$  5.60e-01_{ 9.8e-02}$ & $  5.00e+00_{ 1.0e+00}$ & \cellcolor{gray25}$  3.87e+00_{ 4.4e+00}$ \\
+		1AJX & $  3.43e+00_{ 2.4e+00}$ & \cellcolor{gray95}$  2.61e-01_{ 7.2e-02}$ & $  1.49e+00_{ 3.3e-01}$ & \cellcolor{gray25}$  1.01e+00_{ 2.0e+00}$ \\
+		1D4K & $  8.06e+00_{ 2.7e+00}$ & \cellcolor{gray95}$  4.56e-01_{ 1.4e-01}$ & $  8.56e+00_{ 5.7e-01}$ & \cellcolor{gray25}$  4.65e+00_{ 2.8e+00}$ \\
+		1G2K & $  4.28e+00_{ 1.4e+00}$ & \cellcolor{gray95}$  5.71e-01_{ 1.2e-01}$ & $  3.93e+00_{ 1.3e+00}$ & \cellcolor{gray25}$  2.69e+00_{ 3.6e+00}$ \\
+		1HIV & $  5.12e+00_{ 1.2e+00}$ & \cellcolor{gray95}$  2.63e-01_{ 2.1e-01}$ & $  4.69e+00_{ 1.4e+00}$ & \cellcolor{gray25}$  4.07e+00_{ 1.6e+00}$ \\
+		1HPX & $  1.42e+01_{ 3.6e+00}$ & \cellcolor{gray95}$  6.32e-01_{ 2.8e-01}$ &  \cellcolor{gray25} $6.71e-01_{ 1.1e+01}$ & $  1.03e+01_{ 1.3e+01}$ \\
+		1HTF & $  1.76e+00_{ 5.5e-01}$ & \cellcolor{gray25}$  9.30e-01_{ 3.0e-01}$ & $  1.13e+00_{ 8.0e-01}$ & \cellcolor{gray95}$  7.94e-01_{ 9.2e-01}$ \\
+		1HTG & $  7.48e+00_{ 7.1e-01}$ & \cellcolor{gray95}$  9.63e-01_{ 6.6e-02}$ & $  6.82e+00_{ 8.7e-01}$ & \cellcolor{gray25}$  5.03e+00_{ 6.4e+00}$ \\
+		1HVH & $  5.94e+00_{ 1.5e+00}$ & \cellcolor{gray95}$  1.34e-01_{ 2.7e-02}$ & $  4.93e+00_{ 1.7e+00}$ & \cellcolor{gray25}$  4.16e-01_{ 2.1e+00}$ \\
+		1VB9 & $  8.59e+00_{ 2.4e+00}$ & \cellcolor{gray95}$  1.33e-01_{ 5.6e-02}$ & $  7.85e+00_{ 1.3e+00}$ & \cellcolor{gray25}$  7.04e+00_{ 4.9e+00}$ \\
+		2UPJ & $  3.42e+00_{ 2.4e+00}$ & \cellcolor{gray95}$  3.03e-01_{ 6.6e-02}$ & $  3.56e+00_{ 1.1e+00}$ & \cellcolor{gray25}$  7.64e-01_{ 2.7e+00}$ \\
+		\hline
+	\end{tabular}
+	%\end{scriptsize}
+\end{table}
+
+The $I_{HV}$ is the sum of the contributed volume of each point of a front in respect to a reference point, so the higher the convergence and diversity degrees of a front, the higher its $I_{HV}$ value. According to these results, SMPSO achieves the best $I_{HV}$ values in all the eleven problems, being MOEA/D the second best performing technique. It is important to note that many cells have a $I_{HV}$ value equal to zero, this happens when all the points of the produced fronts are beyond the limits of the reference point. This happens in most of the problems in all the algorithms excepting SMPSO, what leads us to think that we are facing a hard optimization problem.
+Also, SMPSO achieves the best performance results according the $I_{\epsilon+}$ indicator (in this case, the lower the value, the better). SMPSO achieves the best values for all 11 instances except for 1HTF, in which it got the second best value. MOEA/D, which was the algorithm that got the best value for 1HTF), achieved the second best values for 9 instances. GDE3 got the second best value in one instance (1HPX) while NSGA-II got the worst results for all the instances. More details about this study can be read in the publication of Section~\ref{sec:publications-alcob}.
+
+These results were taken as a start for our second multi-objective study, where we realized a comparison between several variants of SMPSO based on different archiving strategies. In particular, these variants were: SMPSO$_{hv}$, SMPSOD and  SMPSOC. The original SMPSO and OMOPSO (the algorithm which SMPSO was inspired from) were also included in the comparison. The experiment carried on replicated the same scenario than the previous study (binding energy and RMSD as optimization objectives, 11 ligand-protein complexes, $I_{HV}$ and $I_{\epsilon+}$ as quality indicators).
+
+Once again, Table~\ref{tab:ants-medians} shows the median and interquartile range of $I_{HV}$ and $I_{\epsilon+}$ for each algorithm and instance. The best and second best median results have dark and light gray backgrounds, respectively. According to the $I_{HV}$ indicator, SMPSO$_{hv}$ obtained the best results for all the 11 instances, whereas SMPSOD got the second best value in 6 instances, SMPSOC in three and the original SMPSO in two, respectively. In the same manner, SMPSO$_{hv}$ obtained against the best values for the 11 instances according to the $I_{\epsilon+}$ indicator. The second best values were achieved by SMPSOD in 7 instances, the original SMPSO in three and SMPSOC in one instance, respectively. More details can be read in Section~\ref{sec:publications-alcob}.
+
+In both studies, the results were assessed with statistical confidence using Friedman's ranking and Holm's post-hoc multicompare tests.
+
+\begin{table}
+	\caption{Median and interquartile range of $I_{HV}$ for each algorithm and instance. Best and second best median results have dark and light gray backgrounds, respectively.}
+	\label{tab:ants-medians}
+	\centering
+	%\begin{scriptsize}
+	\scriptsize
+	\begin{tabular}{l|lllll}
+		\hline
+		$I_{HV}$ & SMPSO & SMPSO$_{hv}$ & SMPSOD & SMPSOC &  OMOPSO\\
+		\hline
+		1AJV & \cellcolor{gray25}$  3.65e-01_{ 5.1e-02}$ & \cellcolor{gray95}$  4.33e-01_{ 4.0e-02}$ & $  3.63e-01_{ 4.6e-02}$ & $  3.55e-01_{ 4.8e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1AJX & $  4.31e-01_{ 2.5e-02}$ & \cellcolor{gray95}$  5.06e-01_{ 2.7e-02}$ & \cellcolor{gray25}$  4.74e-01_{ 3.7e-02}$ & $  4.43e-01_{ 3.6e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1D4K & $  6.67e-01_{ 8.1e-02}$ & \cellcolor{gray95}$  8.48e-01_{ 1.1e-01}$ & $  7.11e-01_{ 9.4e-02}$ & \cellcolor{gray25}$  7.35e-01_{ 9.2e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1G2K & \cellcolor{gray25}$  3.84e-01_{ 5.3e-02}$ & \cellcolor{gray95}$  4.58e-01_{ 5.9e-02}$ & $  3.82e-01_{ 4.1e-02}$ & $  3.52e-01_{ 5.2e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HIV & $  4.86e-01_{ 2.0e-01}$ & \cellcolor{gray95}$  6.74e-01_{ 2.9e-02}$ & \cellcolor{gray25}$  5.87e-01_{ 7.1e-02}$ & $  4.66e-01_{ 2.4e-01}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HPX & $  3.60e-01_{ 1.8e-01}$ & \cellcolor{gray95}$  6.30e-01_{ 9.7e-02}$ & \cellcolor{gray25}$  4.77e-01_{ 1.0e-01}$ & $  4.63e-01_{ 1.4e-01}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HTF & $  2.61e-01_{ 3.3e-01}$ & \cellcolor{gray95}$  4.17e-01_{ 2.4e-01}$ & \cellcolor{gray25}$  3.96e-01_{ 7.9e-02}$ & $  2.77e-01_{ 3.1e-01}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HTG & $  8.33e-02_{ 1.3e-01}$ & \cellcolor{gray95}$  1.46e-01_{ 9.6e-02}$ & \cellcolor{gray25}$  1.03e-01_{ 8.2e-02}$ & $  7.13e-02_{ 1.3e-01}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1HVH & $  7.78e-01_{ 4.7e-02}$ & \cellcolor{gray95}$  8.69e-01_{ 9.3e-03}$ & $  7.70e-01_{ 2.4e-02}$ & \cellcolor{gray25}$  7.85e-01_{ 2.9e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		1VB9 & $  4.10e-01_{ 1.2e-01}$ & \cellcolor{gray95}$  5.09e-01_{ 5.6e-02}$ & $  4.12e-01_{ 1.1e-01}$ & \cellcolor{gray25}$  4.38e-01_{ 9.1e-02}$ & $  0.00e+00_{ 0.0e+00}$ \\
+		2UPJ & $  5.82e-01_{ 9.6e-02}$ & \cellcolor{gray95}$  6.96e-01_{ 5.1e-02}$ & \cellcolor{gray25}$  6.27e-01_{ 7.4e-02}$ & $  6.20e-01_{ 6.8e-02}$ & $  1.99e-01_{ 6.4e-01}$ \\
+		\hline
+		$I_{\epsilon+}$ & SMPSO & SMPSO$_{hv}$ & SMPSOD & SMPSOC &  OMOPSO\\
+		\hline
+		1AJV & \cellcolor{gray25}$  5.12e-01_{ 1.0e-01}$ & \cellcolor{gray95}$  3.94e-01_{ 6.7e-02}$ & $  5.35e-01_{ 1.0e-01}$ & $  5.46e-01_{ 1.0e-01}$ & $  5.31e+00_{ 2.0e+00}$ \\
+		1AJX & $  2.31e-01_{ 1.1e-01}$ & \cellcolor{gray95}$  1.32e-01_{ 4.3e-02}$ & \cellcolor{gray25}$  1.94e-01_{ 6.1e-02}$ & $  2.57e-01_{ 9.4e-02}$ & $  2.54e+00_{ 3.2e+00}$ \\
+		1D4K & $  2.06e-01_{ 8.6e-02}$ & \cellcolor{gray95}$  4.41e-02_{ 1.2e-01}$ & \cellcolor{gray25}$  1.54e-01_{ 7.3e-02}$ & $  1.57e-01_{ 8.1e-02}$ & $  8.81e+00_{ 4.1e+00}$ \\
+		1G2K & \cellcolor{gray25}$  4.29e-01_{ 1.7e-01}$ & \cellcolor{gray95}$  2.81e-01_{ 2.0e-01}$ & $  4.75e-01_{ 9.7e-02}$ & $  5.15e-01_{ 1.1e-01}$ & $  6.01e+00_{ 2.3e+00}$ \\
+		1HIV & $  3.95e-01_{ 3.6e-01}$ & \cellcolor{gray95}$  9.03e-02_{ 6.4e-02}$ & \cellcolor{gray25}$  2.66e-01_{ 1.2e-01}$ & $  4.36e-01_{ 3.2e-01}$ & $  4.91e+00_{ 1.1e+00}$ \\
+		1HPX & $  4.25e-01_{ 2.8e-01}$ & \cellcolor{gray95}$  1.30e-01_{ 9.2e-02}$ & \cellcolor{gray25}$  2.95e-01_{ 1.2e-01}$ & $  3.17e-01_{ 1.7e-01}$ & $  1.13e+01_{ 5.7e+00}$ \\
+		1HTF & $  6.60e-01_{ 1.5e+00}$ & \cellcolor{gray95}$  5.46e-01_{ 3.7e-01}$ & \cellcolor{gray25}$  5.64e-01_{ 1.1e-01}$ & $  6.85e-01_{ 4.3e-01}$ & $  1.49e+00_{ 6.2e-01}$ \\
+		1HTG & $  9.07e-01_{ 1.4e-01}$ & \cellcolor{gray95}$  8.35e-01_{ 9.3e-02}$ & \cellcolor{gray25}$  8.84e-01_{ 8.8e-02}$ & $  9.23e-01_{ 2.1e-01}$ & $  1.21e+01_{ 7.7e+00}$ \\
+		1HVH & \cellcolor{gray25}$  1.46e-01_{ 4.4e-02}$ & \cellcolor{gray95}$  6.12e-02_{ 4.8e-03}$ & $  1.47e-01_{ 3.9e-02}$ & $  1.52e-01_{ 3.1e-02}$ & $  5.11e+00_{ 2.4e+00}$ \\
+		1VB9 & $  3.34e-01_{ 2.2e-01}$ & \cellcolor{gray95}$  1.96e-01_{ 7.7e-02}$ & $  3.44e-01_{ 1.8e-01}$ & \cellcolor{gray25}$  2.97e-01_{ 1.3e-01}$ & $  9.31e+00_{ 1.6e+00}$ \\
+		2UPJ & $  2.86e-01_{ 7.9e-02}$ & \cellcolor{gray95}$  1.76e-01_{ 9.2e-02}$ & \cellcolor{gray25}$  2.25e-01_{ 1.4e-01}$ & $  2.70e-01_{ 5.1e-02}$ & $  7.74e-01_{ 4.0e+00}$ \\
+		\hline
+	\end{tabular}
+	%\end{scriptsize}
+\end{table}
